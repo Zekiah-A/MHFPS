@@ -5,6 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public GameObject Plr;
+    public Transform GroundCheck;
     public Transform CamTransform;
     public CharacterController Controller;
     public static bool IsFirstPerson = true; //haha
@@ -16,7 +17,13 @@ public class Player : MonoBehaviour
 
     void Start() { }
 
-    void Update() { }
+    void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.C)) //change to getKeyDown
+        {
+            IsFirstPerson = !IsFirstPerson;
+        }
+    }
 
     public enum States
     {

@@ -6,14 +6,14 @@ public class Player_Camera : Player
 {
     public static float Sensitivity = 100f;
 
-    private static Transform Body;
-    private static float xRotation;
+    private static Transform body;
+    private static float x_rotation;
 
     public Player_Camera() { return; }
 
     public void Start() 
     {
-        Body = Plr.GetComponent<Transform>();
+        body = Plr.GetComponent<Transform>();
     }
 
     public void Update()
@@ -23,11 +23,11 @@ public class Player_Camera : Player
             float mouseX = Input.GetAxis("Mouse X") * Sensitivity * Time.deltaTime;
             float mouseY = Input.GetAxis("Mouse Y") * Sensitivity * Time.deltaTime;
 
-            xRotation -= mouseY;
-            xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+            x_rotation -= mouseY;
+            x_rotation = Mathf.Clamp(x_rotation, -90f, 90f);
 
-            CamTransform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
-            Body.Rotate(Vector3.up * mouseX);
+            CamTransform.localRotation = Quaternion.Euler(x_rotation, 0f, 0f);
+            body.Rotate(Vector3.up * mouseX);
             Cursor.lockState = CursorLockMode.Locked;
         }
     }
