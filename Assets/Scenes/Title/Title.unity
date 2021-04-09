@@ -2697,7 +2697,7 @@ ReflectionProbe:
   m_Mode: 0
   m_RefreshMode: 0
   m_TimeSlicingMode: 0
-  m_Resolution: 128
+  m_Resolution: 512
   m_UpdateFrequency: 0
   m_BoxSize: {x: 8.87636, y: 3.8557575, z: 6.831389}
   m_BoxOffset: {x: -0.27859592, y: 0.85666525, z: 0.07313275}
