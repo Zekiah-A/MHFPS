@@ -8,6 +8,8 @@ public class Player : MonoBehaviour
     public Transform GroundCheck;
     public Transform CamTransform;
     public CharacterController Controller;
+    public LayerMask GroundMask;
+    public Transform body;
     public static bool IsFirstPerson = true; //haha
 
     private const int max_speed = 10;
@@ -15,14 +17,19 @@ public class Player : MonoBehaviour
 
     public Player() { return; }
 
-    void Start() { }
+    void Start()
+    {
+        IsFirstPerson = false;
+        body = Plr.GetComponent<Transform>(); //change to  editor
+    } //REMOVE LATER
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.C)) //change to getKeyDown
-        {
-            IsFirstPerson = !IsFirstPerson;
-        }
+        //if(Input.GetKey(KeyCode.C)) //change to getKeyDown
+        //{
+        //    IsFirstPerson = !IsFirstPerson;
+        //}
+
     }
 
     public enum States
