@@ -5,12 +5,15 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public GameObject Plr;
+    public Transform body;
     public Transform GroundCheck;
     public Transform CamTransform;
+    //public Transform PlayerModel;
+    public Transform Pivot;
     public CharacterController Controller;
     public LayerMask GroundMask;
-    public Transform body;
-    public static bool IsFirstPerson = true; //haha
+
+    public static bool IsFirstPerson; //haha
 
     private const int max_speed = 10;
     private float current_velocity;
@@ -25,10 +28,10 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        //if(Input.GetKey(KeyCode.C)) //change to getKeyDown
-        //{
-        //    IsFirstPerson = !IsFirstPerson;
-        //}
+       if(Input.GetKey(KeyCode.C)) //change to getKeyDown
+        {
+            IsFirstPerson = !IsFirstPerson;
+        }
 
     }
 

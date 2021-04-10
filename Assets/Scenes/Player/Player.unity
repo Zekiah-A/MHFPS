@@ -287,6 +287,38 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &11627383
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 11627384}
+  m_Layer: 0
+  m_Name: PlayerModel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &11627384
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 11627383}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 782734763}
+  - {fileID: 1352289966}
+  m_Father: {fileID: 1495907963}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &175962976
 GameObject:
   m_ObjectHideFlags: 0
@@ -2485,6 +2517,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &278785889
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 278785890}
+  m_Layer: 0
+  m_Name: Pivot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &278785890
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 278785889}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1146450456}
+  m_Father: {fileID: 1495907963}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &543347972
 Mesh:
   m_ObjectHideFlags: 0
@@ -2672,12 +2735,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 782734762}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1495907963}
-  m_RootOrder: 2
+  m_Father: {fileID: 11627384}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1012601466
 GameObject:
@@ -4101,7 +4164,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1495907963}
+  m_Father: {fileID: 278785890}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1158339842
@@ -4225,11 +4288,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1352289965}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1495907963}
+  m_Father: {fileID: 11627384}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &1352289967
@@ -4476,9 +4539,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1146450456}
-  - {fileID: 1352289966}
-  - {fileID: 782734763}
+  - {fileID: 11627384}
+  - {fileID: 278785890}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4513,13 +4575,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Plr: {fileID: 1495907962}
+  body: {fileID: 1495907963}
   GroundCheck: {fileID: 782734763}
   CamTransform: {fileID: 1146450456}
+  PlayerModel: {fileID: 11627384}
+  Pivot: {fileID: 278785890}
   Controller: {fileID: 1495907964}
   GroundMask:
     serializedVersion: 2
     m_Bits: 64
-  body: {fileID: 1495907963}
 --- !u!114 &1495907966
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4533,14 +4597,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Plr: {fileID: 1495907962}
+  body: {fileID: 1495907963}
   GroundCheck: {fileID: 782734763}
   CamTransform: {fileID: 1146450456}
+  PlayerModel: {fileID: 11627384}
+  Pivot: {fileID: 278785890}
   Controller: {fileID: 1495907964}
   GroundMask:
     serializedVersion: 2
     m_Bits: 64
-  body: {fileID: 1495907963}
   Offsets: {x: 0, y: 2, z: -8}
+  FPOffsets: {x: 0, y: 1, z: 0}
 --- !u!114 &1495907967
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4554,13 +4621,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Plr: {fileID: 1495907962}
+  body: {fileID: 1495907963}
   GroundCheck: {fileID: 782734763}
   CamTransform: {fileID: 1146450456}
+  PlayerModel: {fileID: 11627384}
+  Pivot: {fileID: 278785890}
   Controller: {fileID: 1495907964}
   GroundMask:
     serializedVersion: 2
     m_Bits: 64
-  body: {fileID: 1495907963}
   Speed: 5
   JumpHeight: 0.6
 --- !u!1 &1508843686

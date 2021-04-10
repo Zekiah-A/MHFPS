@@ -21,30 +21,33 @@ public class Player_Movement : Player
 
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
+        if (is_grounded)
+        {
+            if (velocity.y < 0)
+                velocity.y = -2f;
+            if (Input.GetButtonDown("Jump"))
+                velocity.y = Mathf.Sqrt(JumpHeight * -2f * gravity);
+        }
+        else
+        {
+            x = x / 1.5f; z = z / 1.5f;
+        }
 
-        //if (IsFirstPerson)
-        //{
-            if (is_grounded)
-            {
-                if (velocity.y < 0)
-                    velocity.y = -2f;
-                if (Input.GetButtonDown("Jump"))
-                    velocity.y = Mathf.Sqrt(JumpHeight * -2f * gravity);
-            }
-            else 
-            {
-                x = x / 1.5f; z = z / 1.5f;
-            }
-
+        if (IsFirstPerson)
+        {
             Vector3 toMove = transform.right * x + body.forward * z;
             Controller.Move(toMove * Speed * Time.deltaTime);
 
             velocity.y += gravity * Time.deltaTime;
             Controller.Move(velocity * Time.deltaTime);
-        //}
-        //else
-        //{
-        //
-        //}
+        }
+        else
+        {
+            Vector3 toMove = transform.right * x + Pivot.forward * z;
+            Controller.Move(toMove * Speed * Time.deltaTime);
+
+            velocity.y += gravity * Time.deltaTime;
+            Controller.Move(velocity * Time.deltaTime);
+        }
     }
 }

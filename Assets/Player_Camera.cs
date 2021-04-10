@@ -6,6 +6,7 @@ public class Player_Camera : Player
 {
     public static float Sensitivity = 200f;
     public Vector3 Offsets;
+    public Vector3 FPOffsets;
 
     private float max_z;
     private RaycastHit hit;
@@ -34,10 +35,12 @@ public class Player_Camera : Player
 
             CamTransform.localRotation = Quaternion.Euler(x_rotation, 0f, 0f);
             body.Rotate(Vector3.up * mouseX);
+            CamTransform.localPosition = FPOffsets;
             Cursor.lockState = CursorLockMode.Locked;
         }
         else //TODO: FIX BODY NAME (CAPITAL)
         {
+            #region HIDE
             /*
             if(Physics.CheckSphere(CamTransform.position, 0.5f, GroundMask))
             {
@@ -50,7 +53,7 @@ public class Player_Camera : Player
             }
             CamTransform.localPosition = Offsets; 
             */
-
+            #endregion
             if (Physics.Linecast(body.position, CamTransform.position, out hit))
             {
                 CamTransform.localPosition = new Vector3(Offsets.x, Offsets.y, -Vector3.Distance(body.position, hit.point));
@@ -61,7 +64,7 @@ public class Player_Camera : Player
             }
 
             CamTransform.localRotation = Quaternion.Euler(x_rotation, 0f, 0f);
-            body.Rotate(Vector3.up * mouseX);
+            Pivot.Rotate(Vector3.up * mouseX);
             Cursor.lockState = CursorLockMode.Locked;
         }
     }
