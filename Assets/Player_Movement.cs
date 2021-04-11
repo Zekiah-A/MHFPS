@@ -5,8 +5,9 @@ using UnityEngine;
 public class Player_Movement : Player
 {
     public float Speed = 12f;
+    public float WalkSpeed = 12f;
+    public float SprintSpeed = 16f;
     public float JumpHeight = 25f;
-
    
     private Vector3 velocity;
     private const float gravity = -19.62f;//-9.81f; /* More to simulate the charcters mass */
@@ -21,12 +22,17 @@ public class Player_Movement : Player
 
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
+
         if (is_grounded)
         {
             if (velocity.y < 0)
                 velocity.y = -2f;
             if (Input.GetButtonDown("Jump"))
                 velocity.y = Mathf.Sqrt(JumpHeight * -2f * gravity);
+            if (Input.GetKey(KeyCode.LeftShift)) //TODO: Change to the unity input system.
+                Speed = SprintSpeed;
+            else
+                Speed = WalkSpeed;
         }
         else
         {

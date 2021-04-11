@@ -47,11 +47,19 @@ public class Player_Camera : Player
 
             if (Physics.Linecast(body.position, CamTransform.position, out hit))
             {
-                CamTransform.localPosition = new Vector3(Offsets.x, Offsets.y, -Vector3.Distance(body.position, hit.point));
+                ///CamTransform.localPosition = new Vector3(Offsets.x, Offsets.y, -Vector3.Distance(body.position, hit.point));
+                //var moveTo = new Vector3(Offsets.x, Offsets.y, -Vector3.Distance(body.position, hit.point));
+                //CamTransform.localPosition = Vector3.Lerp(CamTransform.localPosition, moveTo, 10f);
+                Offsets.z += 0.01f; /*/ * Time.deltaTime; /*/
+                CamTransform.localPosition = Offsets; /*/ /*/
             }
             else
             {
-                CamTransform.localPosition = Offsets;
+                ///CamTransform.localPosition = Offsets;
+                //CamTransform.localPosition = Vector3.Lerp(CamTransform.localPosition, Offsets, 10f);
+                if (Offsets.z >= -8f)
+                    Offsets.z -= 0.01f;
+                CamTransform.localPosition = Offsets; /*/ /*/
             }
 
             Pivot.localRotation = Quaternion.Euler(x_rotation, 0f, 0f);
