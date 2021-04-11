@@ -28,7 +28,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-       if(Input.GetKey(KeyCode.C)) //change to getKeyDown
+       if(Input.GetKeyDown(KeyCode.C)) //change to getKeyDown
         {
             IsFirstPerson = !IsFirstPerson;
         }

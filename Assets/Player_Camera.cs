@@ -10,6 +10,7 @@ public class Player_Camera : Player
 
     private float max_z;
     private RaycastHit hit;
+    private float start_time;
     //private static Transform body;
     private static float x_rotation;
 
@@ -18,6 +19,7 @@ public class Player_Camera : Player
     public void Start() 
     {
         body = Plr.GetComponent<Transform>();
+        start_time = Time.time;
         max_z = Offsets.z;
 
         CamTransform.localPosition = Offsets; //DELETE!
@@ -40,20 +42,9 @@ public class Player_Camera : Player
         }
         else //TODO: FIX BODY NAME (CAPITAL)
         {
-            #region HIDE
-            /*
-            if(Physics.CheckSphere(CamTransform.position, 0.5f, GroundMask))
-            {
-                Offsets.z += 1f;
-            } else {
-                if(Mathf.Floor(Offsets.z) >= max_z)
-                {
-                    Offsets.z -= 1f;
-                }
-            }
-            CamTransform.localPosition = Offsets; 
-            */
-            #endregion
+            x_rotation -= mouseY;
+            x_rotation = Mathf.Clamp(x_rotation, -90f, 90f);
+
             if (Physics.Linecast(body.position, CamTransform.position, out hit))
             {
                 CamTransform.localPosition = new Vector3(Offsets.x, Offsets.y, -Vector3.Distance(body.position, hit.point));
@@ -63,8 +54,8 @@ public class Player_Camera : Player
                 CamTransform.localPosition = Offsets;
             }
 
-            CamTransform.localRotation = Quaternion.Euler(x_rotation, 0f, 0f);
-            Pivot.Rotate(Vector3.up * mouseX);
+            Pivot.localRotation = Quaternion.Euler(x_rotation, 0f, 0f);
+            body.Rotate(Vector3.up * mouseX);
             Cursor.lockState = CursorLockMode.Locked;
         }
     }
