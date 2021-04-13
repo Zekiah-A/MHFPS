@@ -57,9 +57,9 @@ public class Player_Camera : Player
             {
                 ///CamTransform.localPosition = Offsets;
                 //CamTransform.localPosition = Vector3.Lerp(CamTransform.localPosition, Offsets, 10f);
-                if (Offsets.z >= -8f)
+                if (Offsets.z >= -8f) //TODO: PROPER VAR
                     Offsets.z -= 0.01f;
-                CamTransform.localPosition = Offsets; /*/ /*/
+                CamTransform.localPosition = Offsets;
             }
 
             Pivot.localRotation = Quaternion.Euler(x_rotation, 0f, 0f);
