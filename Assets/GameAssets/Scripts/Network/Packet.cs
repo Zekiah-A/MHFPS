@@ -8,6 +8,9 @@ using UnityEngine;
 public enum ServerPackets
 {
     welcome = 1,
+    spawnPlayer,
+    playerPosition,
+    playerRotation,
     udpTest
 }
 
@@ -15,6 +18,7 @@ public enum ServerPackets
 public enum ClientPackets
 {
     welcomeReceived = 1,
+    playerMovement,
     udpTestReceived
 }
 
@@ -158,6 +162,21 @@ public class Packet : IDisposable
     {
         Write(_value.Length); // Add the length of the string to the packet
         buffer.AddRange(Encoding.ASCII.GetBytes(_value)); // Add the string itself
+    }
+    public void Write(Vector3 _value)
+    {
+        Write(_value.x); //Add x value of Vector3
+        Write(_value.y); //Add y value of Vector3
+        Write(_value.z); //Add z value of vector3
+    }
+    ///<summary>Adds a quaternion to the packet</summary>
+    ///<param name="_value">The quaternion to add</param>
+    public void Write(Quaternion _value)
+    {
+        Write(_value.x); //Add x value of quaternion
+        Write(_value.y); //Add y value of quaternion
+        Write(_value.z); //Add z value of quaternion
+        Write(_value.w); //Add w value of quaternion
     }
     #endregion
 
