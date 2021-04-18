@@ -48,11 +48,17 @@ public class ClientHandle : MonoBehaviour
             {
                 //Debug.Log($"This is the guy! toplayer: {_toPlayer}, manager: {_player} managerID: {_player.id}");
                 Debug.Log($"{_player.username} moved to {_newPos}");
+
+                //TODO: Hmmm
+                GameObject _plrObj = GameManager.players[_player.id].gameObject;
+                _plrObj.transform.position = _newPos;
             }
+            /*
             else //I COULD JUST USE Client.instance.id since THIS is on the player
             {
                 Debug.Log(""); //Foreach got the wrong dude
             }
+            */
         }   
     }
 
