@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class Netplayer : MonoBehaviour
 {
+    public Netplayer instance;
+
     public GameObject Plr;
     public Transform body;
     public Transform GroundCheck;
     public Transform CamTransform;
-    //public Transform PlayerModel;
     public Transform Pivot;
     public CharacterController Controller;
     public LayerMask GroundMask;
