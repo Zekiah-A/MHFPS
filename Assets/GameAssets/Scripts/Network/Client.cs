@@ -40,30 +40,31 @@ public class Client : MonoBehaviour
 
     public void ConnectToServer(string _ipField) //public void ConnectToServer() => tcp.Connect();
     {
-        /*
-        try
+
+        var _ipFieldArray = Dns.GetHostAddresses(_ipField);
+
+        foreach (var i in _ipFieldArray)
         {
-            _ipField = Dns.GetHostAddresses(_ipField)[1].ToString();
-        }
-        catch
-        {
-            _ipField = Dns.GetHostAddresses(_ipField)[0].ToString();
+            if (_ipField.Length > 0)
+            {
+                string[] subIP = i.ToString().Split('.');
+
+                if (subIP.Length == 4)
+                {
+                    ip = i.ToString();
+                    InitializeClientData();
+                    tcp.Connect();
+                    break;
+                }
+                else
+                {
+                    //TODO: IPV6
+                }
+            }
         }
 
         Debug.Log(_ipField);
 
-        string[] subIP = _ipField.Split('.');
-
-        if (_ipField.Length > 0)
-        {
-            if (subIP.Length == 4)
-            {
-                ip = _ipField;
-                InitializeClientData();
-                tcp.Connect();
-            }
-        }
-        */
         InitializeClientData();
         tcp.Connect();
     }

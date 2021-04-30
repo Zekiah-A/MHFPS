@@ -49,6 +49,7 @@ public class ClientHandle : MonoBehaviour
 
                 GameObject _plrObj = GameManager.players[_player.id].gameObject;
                 _plrObj.transform.position = _newPos;
+                break;
             }
         }   
     }
@@ -67,6 +68,7 @@ public class ClientHandle : MonoBehaviour
 
                 GameObject _plrObj = GameManager.players[_player.id].gameObject;
                 _plrObj.transform.rotation = _newRot;
+                break;
             }
         }
     }
