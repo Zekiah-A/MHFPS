@@ -48,9 +48,6 @@ public class Netplayer_Camera : Player
 
             if (Physics.Linecast(body.position, CamTransform.position, out hit))
             {
-                ///CamTransform.localPosition = new Vector3(Offsets.x, Offsets.y, -Vector3.Distance(body.position, hit.point));
-                //var moveTo = new Vector3(Offsets.x, Offsets.y, -Vector3.Distance(body.position, hit.point));
-                //CamTransform.localPosition = Vector3.Lerp(CamTransform.localPosition, moveTo, 10f);
                 Offsets.z += 0.01f; /*/ * Time.deltaTime; /*/
                 CamTransform.localPosition = Offsets; /*/ /*/
             }

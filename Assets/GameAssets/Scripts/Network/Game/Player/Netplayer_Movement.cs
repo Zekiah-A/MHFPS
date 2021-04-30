@@ -8,7 +8,7 @@ public class Netplayer_Movement : Player
     public float Speed = 12f;
     public float WalkSpeed = 12f;
     public float SprintSpeed = 16f;
-    public float JumpHeight = 25f;
+    public float JumpHeight = 2f;
 
     public bool SocketConnected = false;
 

@@ -387,7 +387,7 @@ MonoBehaviour:
   Speed: 5
   WalkSpeed: 12
   SprintSpeed: 16
-  JumpHeight: 25
+  JumpHeight: 2
   SocketConnected: 0
 --- !u!1 &6585362896342050416
 GameObject:

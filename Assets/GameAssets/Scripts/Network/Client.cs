@@ -38,8 +38,32 @@ public class Client : MonoBehaviour
         udp = new UDP();
     }
 
-    public void ConnectToServer() //public void ConnectToServer() => tcp.Connect();
+    public void ConnectToServer(string _ipField) //public void ConnectToServer() => tcp.Connect();
     {
+        /*
+        try
+        {
+            _ipField = Dns.GetHostAddresses(_ipField)[1].ToString();
+        }
+        catch
+        {
+            _ipField = Dns.GetHostAddresses(_ipField)[0].ToString();
+        }
+
+        Debug.Log(_ipField);
+
+        string[] subIP = _ipField.Split('.');
+
+        if (_ipField.Length > 0)
+        {
+            if (subIP.Length == 4)
+            {
+                ip = _ipField;
+                InitializeClientData();
+                tcp.Connect();
+            }
+        }
+        */
         InitializeClientData();
         tcp.Connect();
     }
