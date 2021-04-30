@@ -53,7 +53,7 @@ public class ClientSend : MonoBehaviour
         using (Packet _packet = new Packet((int)ClientPackets.updateRotationReceived))
         {
             _packet.Write(_newRot);
-            SendUDPData(_packet); //TCP temporarily
+            SendUDPData(_packet); 
         }
     }
     #endregion

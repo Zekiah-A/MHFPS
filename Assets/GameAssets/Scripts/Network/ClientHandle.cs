@@ -55,26 +55,19 @@ public class ClientHandle : MonoBehaviour
 
     public static void  PlayerRotation(Packet _packet)
     {
-        int _toPlayer = _packet.ReadInt(); //actually id but i'm confused  
-        Vector3 _newRot = _packet.ReadVector3();
+        int _toPlayer = _packet.ReadInt(); //i removed this :thinking: i need it!
+        Quaternion _newRot = _packet.ReadQuaternion();
         Debug.Log($"Player: { _toPlayer} has rotated to: { _newRot}");
-        //for each player on the server, (Player _player in Player), look for one with maching ID
-        //if matching foun, move THEM
-        /*
-        for (int i = 0; i <= GameManager.players.Values; i++)
-        {
 
-        }
-        */
-        foreach (PlayerManager _player in GameManager.players.Values) // "playermanager" is now plr lol
+        foreach (PlayerManager _player in GameManager.players.Values) // "playermanager" is not plr lol
         {
-            Debug.Log("It's working so far!"); //Just for testing for now! 
-        }
+            if (_player.id == _toPlayer) //TODO: (if we have found the recipient with foreach) - this is slow, go direct and move them!
+            {
+                Debug.Log($"{_player.username} rotated to {_newRot}");
 
-        GameManager.players.TryGetValue(_toPlayer, out PlayerManager _plrManager);
-        if (_plrManager != null)
-            Debug.Log(_plrManager);
-        else
-            Debug.Log("No plr managers found");
+                GameObject _plrObj = GameManager.players[_player.id].gameObject;
+                _plrObj.transform.rotation = _newRot;
+            }
+        }
     }
 }

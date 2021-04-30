@@ -65,6 +65,7 @@ public class Netplayer_Movement : Player
         try
         {
             ClientSend.UpdatePositionReceived(this.transform.position);
+            ClientSend.UpdateRotationReceived(this.transform.rotation);
         }
         catch
         {
