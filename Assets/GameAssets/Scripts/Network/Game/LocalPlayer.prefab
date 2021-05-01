@@ -186,9 +186,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6585362896185890470}
-  - component: {fileID: 6585362896185890464}
-  - component: {fileID: 6585362896185890467}
-  - component: {fileID: 6585362896185890466}
   - component: {fileID: 6585362896185890465}
   - component: {fileID: 7107238091530413157}
   - component: {fileID: 6314466953225957109}
@@ -217,75 +214,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6585362896185890464
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6585362896185890471}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6ad7cd3819e5470daa2d8f676ceff4e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Plr: {fileID: 6585362896185890471}
-  body: {fileID: 6585362896185890470}
-  GroundCheck: {fileID: 6585362895507078518}
-  CamTransform: {fileID: 6585362896137378501}
-  Pivot: {fileID: 6585362895268661183}
-  Controller: {fileID: 6585362896185890465}
-  GroundMask:
-    serializedVersion: 2
-    m_Bits: 64
---- !u!114 &6585362896185890467
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6585362896185890471}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 914708583b97c954291ff615a332cdf8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Plr: {fileID: 6585362896185890471}
-  body: {fileID: 6585362896185890470}
-  GroundCheck: {fileID: 6585362895507078518}
-  CamTransform: {fileID: 6585362896137378501}
-  Pivot: {fileID: 6585362895268661183}
-  Controller: {fileID: 6585362896185890465}
-  GroundMask:
-    serializedVersion: 2
-    m_Bits: 64
-  Offsets: {x: 0, y: 2, z: -8}
-  FPOffsets: {x: 0, y: 1, z: 0}
---- !u!114 &6585362896185890466
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6585362896185890471}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3138e84f032f8a863a956fe1a59e18e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Plr: {fileID: 6585362896185890471}
-  body: {fileID: 6585362896185890470}
-  GroundCheck: {fileID: 6585362895507078518}
-  CamTransform: {fileID: 6585362896137378501}
-  Pivot: {fileID: 6585362895268661183}
-  Controller: {fileID: 6585362896185890465}
-  GroundMask:
-    serializedVersion: 2
-    m_Bits: 64
-  Speed: 5
-  WalkSpeed: 12
-  SprintSpeed: 16
-  JumpHeight: 0.8
 --- !u!143 &6585362896185890465
 CharacterController:
   m_ObjectHideFlags: 0
@@ -448,7 +376,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3c63729f6f5a5333e88ad6efec82de59, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

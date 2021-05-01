@@ -6,15 +6,16 @@ using UnityEngine;
 public class Netplayer_Movement : Player
 {
     public float Speed = 12f;
-    public float WalkSpeed = 12f;
-    public float SprintSpeed = 16f;
-    public float JumpHeight = 2f;
-
     public bool SocketConnected = false;
 
-    private Vector3 velocity;
+    public const float WALKSPEED = 12f;
+    public const float SPRINTSPEED = 16f;
+    public const float JUMPHEIGHT = 2f;
+
     private const float gravity = -19.62f;//-9.81f; /* More to simulate the charcters mass */
     private const float ground_distance = 0.4f;
+
+    private Vector3 velocity;
     private bool is_grounded;
 
     void Update()
@@ -29,11 +30,11 @@ public class Netplayer_Movement : Player
             if (velocity.y < 0)
                 velocity.y = -2f;
             if (Input.GetButtonDown("Jump"))
-                velocity.y = Mathf.Sqrt(JumpHeight * -2f * gravity);
+                velocity.y = Mathf.Sqrt(JUMPHEIGHT * -2f * gravity);
             if (Input.GetKey(KeyCode.LeftShift)) //TODO: Change to the unity input system.
-                Speed = SprintSpeed;
+                Speed = SPRINTSPEED;
             else
-                Speed = WalkSpeed;
+                Speed = WALKSPEED;
         }
         else
         {

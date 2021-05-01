@@ -34,7 +34,7 @@ public class ClientHandle : MonoBehaviour
         Debug.Log($"Received packet via UDP. Contains message: {_msg}");
         ClientSend.UDPTestReceived();
     }
-
+    //TODO: Smoothly lerp/translate between positions (since we only get updates 30 times/sec)
     public static void PlayerPosition(Packet _packet)
     {
         int _toPlayer = _packet.ReadInt(); //i removed this :thinking: i need it!
@@ -49,11 +49,12 @@ public class ClientHandle : MonoBehaviour
 
                 GameObject _plrObj = GameManager.players[_player.id].gameObject;
                 _plrObj.transform.position = _newPos;
+                //_plrObj.transform.localPosition = Vector3.MoveTowards(_plrObj.transform.localPosition, _newPos, Time.deltaTime * _plrMovement.Speed);
                 break;
             }
         }   
     }
-
+    //TODO: Smoothly rotate to new position.
     public static void  PlayerRotation(Packet _packet)
     {
         int _toPlayer = _packet.ReadInt(); //i removed this :thinking: i need it!
