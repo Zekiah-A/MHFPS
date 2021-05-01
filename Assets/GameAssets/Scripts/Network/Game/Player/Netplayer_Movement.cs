@@ -28,13 +28,24 @@ public class Netplayer_Movement : Player
         if (is_grounded)
         {
             if (velocity.y < 0)
+            {
                 velocity.y = -2f;
+            }
             if (Input.GetButtonDown("Jump"))
+            {
                 velocity.y = Mathf.Sqrt(JUMPHEIGHT * -2f * gravity);
+                Netplayer.CurrentState = (int)Netplayer.States.Jumping;
+            }
             if (Input.GetKey(KeyCode.LeftShift)) //TODO: Change to the unity input system.
+            {
                 Speed = SPRINTSPEED;
+                Netplayer.CurrentState = (int)Netplayer.States.Running;
+            }
             else
+            {
                 Speed = WALKSPEED;
+                Netplayer.CurrentState = (int)Netplayer.States.Walking;
+            }
         }
         else
         {

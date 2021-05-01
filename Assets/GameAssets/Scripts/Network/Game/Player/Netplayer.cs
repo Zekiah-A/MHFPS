@@ -14,7 +14,8 @@ public class Netplayer : MonoBehaviour
     public CharacterController Controller;
     public LayerMask GroundMask;
 
-    public static bool IsFirstPerson; //haha
+    public static int CurrentState { get; set; }
+    public static bool IsFirstPerson; //TODO: Use static to hide from other classes
 
     private const int max_speed = 10;
     private float current_velocity;
@@ -24,6 +25,7 @@ public class Netplayer : MonoBehaviour
     void Start()
     {
         IsFirstPerson = false;
+        CurrentState = (int)States.Idle;
         body = Plr.GetComponent<Transform>(); //change to  editor
     } //REMOVE LATER
 
@@ -38,13 +40,14 @@ public class Netplayer : MonoBehaviour
 
     public enum States
     {
+        Idle,
         Walking,
         Running,
         Jumping,
         Crouching,
         Dead
     }
-
+    /*
     public enum Attack
     {
         Punch,
@@ -53,4 +56,5 @@ public class Netplayer : MonoBehaviour
         Trick,
         Block
     }
+    */
 }
