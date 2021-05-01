@@ -9,7 +9,7 @@ using UnityEngine;
  * |F - Punch / Initiate fight|
  * |T - Stomp                 |
  * |G - Countermitz           |
- * |                          |
+ * |``¬¬¬                          |
  * |                          |
  * |                          |
  * |                          |
@@ -24,20 +24,20 @@ public class Netplayer_Actions : Player
 
     void Start()
     {
-        //CurrentState = (int)Netplayer.States.Idle;
         local_player = this.gameObject;
     }
 
 
     void Update()
     {
-        if (Netplayer.CurrentState != (int)Netplayer.States.Dead)
+        switch(Netplayer.CurrentState)
         {
-            can_punch = true;
-        }
-        else
-        {
-            can_punch = false;
+            case (int)Netplayer.States.Dead:
+                can_punch = true;
+                break;
+            default:
+                can_punch = false;
+                break;
         }
     }
 
