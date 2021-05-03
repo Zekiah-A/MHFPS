@@ -37,11 +37,11 @@ public class ClientHandle : MonoBehaviour
     //TODO: Smoothly lerp/translate between positions (since we only get updates 30 times/sec)
     public static void PlayerPosition(Packet _packet)
     {
-        int _toPlayer = _packet.ReadInt(); //i removed this :thinking: i need it!
+        int _toPlayer = _packet.ReadInt(); 
         Vector3 _newPos = _packet.ReadVector3();
         Debug.Log($"Player: { _toPlayer} has moved to: { _newPos}");
 
-        foreach (PlayerManager _player in GameManager.players.Values) // "playermanager" is not plr lol
+        foreach (PlayerManager _player in GameManager.players.Values)
         {
             if (_player.id == _toPlayer) //TODO: (if we have found the recipient with foreach) - this is slow, go direct and move them!
             {
@@ -49,19 +49,19 @@ public class ClientHandle : MonoBehaviour
 
                 GameObject _plrObj = GameManager.players[_player.id].gameObject;
                 _plrObj.transform.position = _newPos;
-                //_plrObj.transform.localPosition = Vector3.MoveTowards(_plrObj.transform.localPosition, _newPos, Time.deltaTime * _plrMovement.Speed);
+                //TODO: _plrObj.transform.localPosition = Vector3.MoveTowards(_plrObj.transform.localPosition, _newPos, Time.deltaTime * _plrMovement.Speed);
                 break;
             }
         }   
     }
     //TODO: Smoothly rotate to new position.
-    public static void  PlayerRotation(Packet _packet)
+    public static void PlayerRotation(Packet _packet)
     {
-        int _toPlayer = _packet.ReadInt(); //i removed this :thinking: i need it!
+        int _toPlayer = _packet.ReadInt(); 
         Quaternion _newRot = _packet.ReadQuaternion();
         Debug.Log($"Player: { _toPlayer} has rotated to: { _newRot}");
 
-        foreach (PlayerManager _player in GameManager.players.Values) // "playermanager" is not plr lol
+        foreach (PlayerManager _player in GameManager.players.Values)
         {
             if (_player.id == _toPlayer) //TODO: (if we have found the recipient with foreach) - this is slow, go direct and move them!
             {
@@ -72,5 +72,15 @@ public class ClientHandle : MonoBehaviour
                 break;
             }
         }
+    }
+
+    public static void TextChat(Packet _packet)
+    {
+        //TODO: call send to chat function for this player (local)!
+        int _sender = _packet.ReadInt();
+        string _msg = _packet.ReadString(); //this may actually be the wrong way round, let's see
+        Debug.Log($"Player: {_sender} sent a {_msg} by textchat.");
+
+        //Netplayer_HUD.Chat.
     }
 }

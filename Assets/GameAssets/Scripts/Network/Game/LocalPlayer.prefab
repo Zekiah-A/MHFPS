@@ -191,6 +191,7 @@ GameObject:
   - component: {fileID: 6314466953225957109}
   - component: {fileID: 2143991134020130179}
   - component: {fileID: 3618781038716896687}
+  - component: {fileID: 7315122370690707936}
   m_Layer: 0
   m_Name: LocalPlayer
   m_TagString: Untagged
@@ -313,10 +314,30 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   Speed: 5
-  WalkSpeed: 12
-  SprintSpeed: 16
-  JumpHeight: 2
   SocketConnected: 0
+--- !u!114 &7315122370690707936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6585362896185890471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64ddd383fd2317fb5bf43e442aec46cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Plr: {fileID: 6585362896185890471}
+  body: {fileID: 6585362896185890470}
+  GroundCheck: {fileID: 6585362895507078518}
+  CamTransform: {fileID: 6585362896137378501}
+  Pivot: {fileID: 6585362895268661183}
+  Controller: {fileID: 6585362896185890465}
+  GroundMask:
+    serializedVersion: 2
+    m_Bits: 64
+  punch_distance: 2
+  punch_delay: 1
 --- !u!1 &6585362896342050416
 GameObject:
   m_ObjectHideFlags: 0

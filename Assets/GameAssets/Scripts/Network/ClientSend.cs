@@ -37,9 +37,7 @@ public class ClientSend : MonoBehaviour
         } 
     }
 
-    //does this send back instantly?  //ok no good
-    //send update position to the server
-    public static void UpdatePositionReceived(Vector3 _newPos) //we can just send this instance's id
+    public static void UpdatePositionReceived(Vector3 _newPos)
     {
         using (Packet _packet = new Packet((int)ClientPackets.updatePositionReceived))
         {
@@ -54,6 +52,16 @@ public class ClientSend : MonoBehaviour
         {
             _packet.Write(_newRot);
             SendUDPData(_packet); 
+        }
+    }
+
+    public static void TextChatReceived(string _msg)
+    {
+        using (Packet _packet = new Packet((int)ClientPackets.textChatReceived))
+        {   //write sender and message
+            _packet.Write(Client.instance.myId);
+            _packet.Write(_msg);
+            SendUDPData(_packet);
         }
     }
     #endregion

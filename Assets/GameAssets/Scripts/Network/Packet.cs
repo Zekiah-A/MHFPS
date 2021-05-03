@@ -11,6 +11,7 @@ public enum ServerPackets
     spawnPlayer,
     playerPosition,
     playerRotation,
+    textChat,
     udpTest
 }
 
@@ -20,6 +21,7 @@ public enum ClientPackets
     welcomeReceived = 1,
     updatePositionReceived,
     updateRotationReceived,
+    textChatReceived,
     udpTestReceived
 }
 
