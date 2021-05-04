@@ -79,7 +79,7 @@ public class ClientHandle : MonoBehaviour
         //TODO: call send to chat function for this player (local)!
         int _sender = _packet.ReadInt();
         string _msg = _packet.ReadString(); //this may actually be the wrong way round, let's see
-        Debug.Log($"Player: {_sender} sent a {_msg} by textchat.");
+        Debug.Log(_msg);
 
         //Netplayer_HUD.Chat.
     }

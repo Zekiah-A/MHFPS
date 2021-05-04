@@ -192,6 +192,7 @@ GameObject:
   - component: {fileID: 2143991134020130179}
   - component: {fileID: 3618781038716896687}
   - component: {fileID: 7315122370690707936}
+  - component: {fileID: 8934879966829419150}
   m_Layer: 0
   m_Name: LocalPlayer
   m_TagString: Untagged
@@ -338,6 +339,18 @@ MonoBehaviour:
     m_Bits: 64
   punch_distance: 2
   punch_delay: 1
+--- !u!114 &8934879966829419150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6585362896185890471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7f16bfafc2e93bbe8dffba0f35ed085, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6585362896342050416
 GameObject:
   m_ObjectHideFlags: 0

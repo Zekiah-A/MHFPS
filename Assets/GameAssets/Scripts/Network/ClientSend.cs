@@ -59,7 +59,7 @@ public class ClientSend : MonoBehaviour
     {
         using (Packet _packet = new Packet((int)ClientPackets.textChatReceived))
         {   //write sender and message
-            _packet.Write(Client.instance.myId);
+            _packet.Write(UiManager.instance.usernameField.text); //TODO: make a dictionary or var for player names, this is stupid
             _packet.Write(_msg);
             SendUDPData(_packet);
         }

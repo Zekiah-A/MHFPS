@@ -34,6 +34,9 @@ public class Netplayer_HUD : MonoBehaviour
     void Start()
     {
         chat = new Chat();
+        //TESTIN G--------------------------------------
+        ClientSend.TextChatReceived("Hello world!");
+        ClientSend.TextChatReceived("sublime axel");
     } 
     
     void Update()
