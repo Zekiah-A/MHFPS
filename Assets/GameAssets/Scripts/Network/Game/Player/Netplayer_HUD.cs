@@ -5,19 +5,20 @@ using UnityEngine.UI;
 
 public class Netplayer_HUD : MonoBehaviour
 {
-    public Chat chat;
+    //public Chat chat;
 
-    public class Chat
+    public InputField InputField;
+    public Button SubmitButton;
+    public Text ChatboxText;
+
+    class Chat : Netplayer_HUD
     {
         public Dictionary<PlayerManager, string> ChatMessages;
 
-        public InputField InputField;
-        public Button SubmitButton;
-        public Text ChatboxText;
-
         public Chat()
         {
-            ChatMessages = new Dictionary<PlayerManager, string>();
+            //ChatMessages = new Dictionary<PlayerManager, string>();
+            //string[] Messages;
         }
 
         public static void UpdateTextChat(string _msg)
@@ -33,15 +34,15 @@ public class Netplayer_HUD : MonoBehaviour
 
     void Start()
     {
-        chat = new Chat();
-        //TESTIN G--------------------------------------
+        //chat = new Chat();
+        //TESTIN G-------------------------------------- works but not yet supposed  to send lol
         ClientSend.TextChatReceived("Hello world!");
         ClientSend.TextChatReceived("sublime axel");
     } 
     
     void Update()
     {
-        
+
     }
 }
 
