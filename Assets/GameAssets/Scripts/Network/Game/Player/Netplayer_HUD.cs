@@ -5,44 +5,29 @@ using UnityEngine.UI;
 
 public class Netplayer_HUD : MonoBehaviour
 {
-    //public Chat chat;
+    public static Netplayer_HUD instance;
 
     public InputField InputField;
-    public Button SubmitButton;
+    //public Button SubmitButton;
     public Text ChatboxText;
 
-    class Chat : Netplayer_HUD
+    public Netplayer_HUD()
     {
-        public Dictionary<PlayerManager, string> ChatMessages;
-
-        public Chat()
-        {
-            //ChatMessages = new Dictionary<PlayerManager, string>();
-            //string[] Messages;
-        }
-
-        public static void UpdateTextChat(string _msg)
-        {
-            //This is called from clientHandle!!!! //add a new message to the list
-        }
-
-        public static void SendTextChat()
-        {
-            //Send to server (through clientsend), which will return this message moderated, and send to all other players.
-        }
+        instance = this;
+        return;
     }
 
-    void Start()
-    {
-        //chat = new Chat();
-        //TESTIN G-------------------------------------- works but not yet supposed  to send lol
-        ClientSend.TextChatReceived("Hello world!");
-        ClientSend.TextChatReceived("sublime axel");
-    } 
-    
-    void Update()
-    {
+    #region CHAT
 
-    }
+    public Dictionary<PlayerManager, string> ChatMessages;
+
+    ///<summary>Update gui with new chat from server. Called from client handle.</summary>
+    public void UpdateTextChat(string _msg) => ChatboxText.text += $"\n" + _msg;
+
+    ///<summary>Send to server (through clientsend), which will return this message moderated, and send to all other players. Called from button.</summary>
+    public void SendTextChat() => ClientSend.TextChatReceived(InputField.text);
+
+    #endregion
+
+    //TODO: Make netplayer hud actually part of the netplayer prefab!
 }
-

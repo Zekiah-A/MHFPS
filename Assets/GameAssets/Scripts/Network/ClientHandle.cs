@@ -81,6 +81,6 @@ public class ClientHandle : MonoBehaviour
         string _msg = _packet.ReadString(); //this may actually be the wrong way round, let's see
         Debug.Log(_msg);
 
-        //Netplayer_HUD.Chat.
+        Netplayer_HUD.instance.UpdateTextChat(_msg);
     }
 }

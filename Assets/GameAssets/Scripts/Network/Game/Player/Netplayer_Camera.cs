@@ -62,7 +62,8 @@ public class Netplayer_Camera : Player
 
             Pivot.localRotation = Quaternion.Euler(x_rotation, 0f, 0f);
             body.Rotate(Vector3.up * mouseX);
-            Cursor.lockState = CursorLockMode.Locked;
+            //Cursor.lockState = CursorLockMode.Locked;
+            Cursor.lockState = CursorLockMode.Confined;
         }
     }
 }
