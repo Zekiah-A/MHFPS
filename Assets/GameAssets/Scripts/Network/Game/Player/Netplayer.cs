@@ -14,8 +14,8 @@ public class Netplayer : MonoBehaviour
     public CharacterController Controller;
     public LayerMask GroundMask;
 
-    public static int CurrentState { get; set; }
-    public static bool IsFirstPerson; //TODO: Use static to hide from other classes
+    public static int CurrentState { get; set; } //I need to do player actions, quick
+    public static bool IsFirstPerson;
 
     private const int max_speed = 10;
     private float current_velocity;
@@ -27,7 +27,9 @@ public class Netplayer : MonoBehaviour
         IsFirstPerson = false;
         CurrentState = (int)States.Idle;
         body = Plr.GetComponent<Transform>(); //change to  editor
-    } //REMOVE LATER
+
+        Cursor.lockState = CursorLockMode.Locked; //TODO: Beter cursor lock - janky fix
+    }
 
     void Update()
     {
@@ -35,6 +37,14 @@ public class Netplayer : MonoBehaviour
         {
             IsFirstPerson = !IsFirstPerson;
         }
+       if (Input.GetKeyDown(KeyCode.Escape))
+       {
+           Cursor.lockState = CursorLockMode.None; 
+       }
+       if (Input.GetKeyDown(KeyCode.Mouse0))
+       {
+            Cursor.lockState = CursorLockMode.Locked;
+       }
 
     }
 
@@ -46,15 +56,5 @@ public class Netplayer : MonoBehaviour
         Jumping,
         Crouching,
         Dead
-    }
-    /*
-    public enum Attack
-    {
-        Punch,
-        Kick,
-        Stomp,
-        Trick,
-        Block
-    }
-    */
+    } //TODO: move enum to be on it's own - ouside of class
 }

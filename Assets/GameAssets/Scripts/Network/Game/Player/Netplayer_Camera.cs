@@ -38,7 +38,6 @@ public class Netplayer_Camera : Player
             CamTransform.localRotation = Quaternion.Euler(x_rotation, 0f, 0f);
             body.Rotate(Vector3.up * mouseX);
             CamTransform.localPosition = FPOffsets;
-            Cursor.lockState = CursorLockMode.None;//Cursor.lockState = CursorLockMode.Locked; 
             //TODO: Toggle cursor lock.
         }
         else //TODO: FIX BODY NAME (CAPITAL)
@@ -62,8 +61,6 @@ public class Netplayer_Camera : Player
 
             Pivot.localRotation = Quaternion.Euler(x_rotation, 0f, 0f);
             body.Rotate(Vector3.up * mouseX);
-            //Cursor.lockState = CursorLockMode.Locked;
-            Cursor.lockState = CursorLockMode.Confined;
         }
     }
 }
