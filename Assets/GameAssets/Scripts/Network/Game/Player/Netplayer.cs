@@ -34,14 +34,14 @@ public class Netplayer : MonoBehaviour
     void Update()
     {
        if(Input.GetKeyDown(KeyCode.C)) //change to getKeyDown
-        {
-            IsFirstPerson = !IsFirstPerson;
-        }
+       {
+           IsFirstPerson = !IsFirstPerson;
+       }
        if (Input.GetKeyDown(KeyCode.Escape))
        {
-           Cursor.lockState = CursorLockMode.None; 
+           Cursor.lockState = CursorLockMode.None;
        }
-       if (Input.GetKeyDown(KeyCode.Mouse0))
+       if (Input.GetKeyDown(KeyCode.Return))
        {
             Cursor.lockState = CursorLockMode.Locked;
        }

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class UIManager : MonoBehaviour
+public class TitleUiManager : MonoBehaviour
 {
     public void LoadMultiplayer()
     {
