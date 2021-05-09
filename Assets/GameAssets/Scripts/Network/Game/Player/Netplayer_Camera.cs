@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Netplayer_Camera : Player
+public class Netplayer_Camera : Netplayer
 {
     public static float Sensitivity = 200f;
     public Vector3 Offsets;

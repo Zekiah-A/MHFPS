@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 
-public class Netplayer_Movement : Player
+public class Netplayer_Movement : MonoBehaviour
 {
     public float Speed = 12f;
     public bool SocketConnected = false;
@@ -12,7 +12,7 @@ public class Netplayer_Movement : Player
     public const float SPRINTSPEED = 16f;
     public const float JUMPHEIGHT = 2f;
 
-    private const float gravity = -19.62f;//-9.81f; /* More to simulate the charcters mass */
+    private const float gravity = -9.81f;
     private const float ground_distance = 0.4f;
 
     private Vector3 velocity;
@@ -20,7 +20,7 @@ public class Netplayer_Movement : Player
 
     void Update()
     {
-        is_grounded = Physics.CheckSphere(GroundCheck.position, ground_distance, GroundMask);
+        is_grounded = Physics.CheckSphere(Netplayer.instance.GroundCheck.position, ground_distance, Netplayer.instance.GroundMask);
 
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
@@ -31,11 +31,13 @@ public class Netplayer_Movement : Player
             {
                 velocity.y = -2f;
             }
+
             if (Input.GetButtonDown("Jump"))
             {
                 velocity.y = Mathf.Sqrt(JUMPHEIGHT * -2f * gravity);
                 Netplayer.CurrentState = (int)Netplayer.States.Jumping;
             }
+
             if (Input.GetKey(KeyCode.LeftShift)) //TODO: Change to the unity input system.
             {
                 Speed = SPRINTSPEED;
@@ -52,50 +54,29 @@ public class Netplayer_Movement : Player
             x = x / 1.5f; z = z / 1.5f;
         }
 
-        if (IsFirstPerson)
+        if (Netplayer.IsFirstPerson)
         {
-            Vector3 toMove = transform.right * x + body.forward * z;
-            Controller.Move(toMove * Speed * Time.deltaTime);
+            Vector3 toMove = transform.right * x + Netplayer.instance.body.forward * z;
+            Netplayer.instance.Controller.Move(toMove * Speed * Time.deltaTime);
 
             velocity.y += gravity * Time.deltaTime;
-            Controller.Move(velocity * Time.deltaTime);
+            Netplayer.instance.Controller.Move(velocity * Time.deltaTime);
         }
         else
         {
-            Vector3 toMove = transform.right * x + Pivot.forward * z;
-            Controller.Move(toMove * Speed * Time.deltaTime);
+            Vector3 toMove = transform.right * x + Netplayer.instance.Pivot.forward * z;
+            Netplayer.instance.Controller.Move(toMove * Speed * Time.deltaTime);
 
             velocity.y += gravity * Time.deltaTime;
-            Controller.Move(velocity * Time.deltaTime);
+            Netplayer.instance.Controller.Move(velocity * Time.deltaTime);
         }
-
-        //ClientSend.UpdateRotationReceived(this.transform.rotation);
+        UpdatePosition();
     }
 
-    void FixedUpdate()
+    void UpdatePosition()
     {
-        try
-        {
             ClientSend.UpdatePositionReceived(this.transform.position);
             ClientSend.UpdateRotationReceived(this.transform.rotation);
-        }
-        catch
-        {
-            Debug.Log("");
-        }
     } 
     //TODO: Deal with sending this PROPERLY! (maybe on a separate 30 tick thread?)
-    /*
-    #region Packets
-    public static void PlayerPositionUpdate(Vector3 _newPos)
-    {
-
-    }
-
-    public static void PlayerRotationUpdate(Vector3 _newPos)
-    {
-
-    }
-    #endregion
-    */
 }

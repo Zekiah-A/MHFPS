@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class Netplayer : MonoBehaviour
 {
-    public Netplayer instance;
+    public static Netplayer instance;
 
     public GameObject Plr;
+    public GameObject Skin;
     public Transform body;
     public Transform GroundCheck;
     public Transform CamTransform;
@@ -20,7 +21,7 @@ public class Netplayer : MonoBehaviour
     private const int max_speed = 10;
     private float current_velocity;
 
-    public Netplayer() { return; }
+    public Netplayer() { instance = this; }
 
     void Start()
     {

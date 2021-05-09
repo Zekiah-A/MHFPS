@@ -3,6 +3,7 @@ using System.Text;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Utils.Colour;
 
 /// <summary>Sent from server to client.</summary>
 public enum ServerPackets
@@ -180,6 +181,15 @@ public class Packet : IDisposable
         Write(_value.y); //Add y value of quaternion
         Write(_value.z); //Add z value of quaternion
         Write(_value.w); //Add w value of quaternion
+    }
+    /// <summary>Adds a rgba colour value to the packet.</summary>
+    /// <param name="_value">The colour to add</param>
+    public void Write(Colour _value)
+    {
+        Write(_value.R);
+        Write(_value.G);
+        Write(_value.B);
+        Write(_value.A);
     }
     #endregion
 
@@ -373,6 +383,17 @@ public class Packet : IDisposable
             ReadFloat(_moveReadPos),
             ReadFloat(_moveReadPos),
             ReadFloat(_moveReadPos)
+        );
+    }
+
+    /// <summary>Reads a rgba colour value from the packet.</summary>
+    public Colour ReadColour(bool _moveReadPos = true)
+    {
+        return new Colour(
+            ReadByte(_moveReadPos),
+            ReadByte(_moveReadPos),
+            ReadByte(_moveReadPos),
+            ReadByte(_moveReadPos)
         );
     }
     #endregion

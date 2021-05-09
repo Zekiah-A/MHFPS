@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Net;
+using Utils.Colour;
 using UnityEngine;
 
 public class ClientHandle : MonoBehaviour
@@ -76,11 +77,13 @@ public class ClientHandle : MonoBehaviour
 
     public static void TextChat(Packet _packet)
     {
-        //TODO: call send to chat function for this player (local)!
         int _sender = _packet.ReadInt();
-        string _msg = _packet.ReadString(); //this may actually be the wrong way round, let's see
+        string _msg = _packet.ReadString();
+        Colour _colour = _packet.ReadColour();
+
         Debug.Log(_msg);
 
-        Netplayer_HUD.instance.UpdateTextChat(_msg);
+        Netplayer_HUD.instance.UpdateTextChat(_msg, _colour);
+        Debug.Log($"{_colour.R} {_colour.G} {_colour.B} {_colour.A}");
     }
 }

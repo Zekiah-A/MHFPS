@@ -9,21 +9,23 @@ using UnityEngine;
  * |F - Punch / Initiate fight|
  * |T - Stomp                 |
  * |G - Countermitz           |
- * |``¬¬¬                     |
+ * |                          |
  * |                          |
  * |                          |
  * |                          |
  *  ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
  */
-public class Netplayer_Actions : Player
+public class Netplayer_Actions : Netplayer
 {
-    //public Dictionary<int, string> Inventory = new Dictionary<int, string>();
+    public Dictionary<int, GameObject> Inventory = new Dictionary<int, GameObject>();
 
     private GameObject local_player;
     private bool can_punch;
 
-    [SerializeField] float punch_distance;
-    [SerializeField] float punch_delay;
+    [SerializeField]
+    float punch_distance;
+    [SerializeField] 
+    float punch_delay;
 
     void Start()
     {
@@ -33,43 +35,30 @@ public class Netplayer_Actions : Player
 
     void Update()
     {
-        //switch(Netplayer.CurrentState)
-        //{
-        //    case (int)Netplayer.States.Dead:
-        //        can_punch = false;
-        //        break;
-        //    default:
-        //        can_punch = false;
-        //        break;
-        //}
         if (Input.GetButtonDown("Fire1"))
         {
-            Debug.Log("Player punched");
-
-
-            // Does the ray intersect any objects excluding the player layer
-            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out RaycastHit _hit, punch_distance, GroundMask))
-            {
-                Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * _hit.distance, Color.yellow, 0.2f); //0.2 for easier seeing
-                Debug.Log($"Did Hit {_hit.transform.gameObject}");
-
-                GameObject hitObject = _hit.transform.gameObject;                
-                if (hitObject.GetComponent<Player>()) //if is player
-                {
-
-                }
-            }
+            Punch();
         }
-                //cast ray
     }
 
     void Punch() 
-    { 
-        
-    }
-
-    void PlayAnimation()
     {
+        Debug.Log("Player punched");
 
+        // Does the ray intersect any objects excluding the player layer
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out RaycastHit _hit, punch_distance/*, GroundMask*/))
+        {
+            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * _hit.distance, Color.yellow, 0.2f); //0.2 for easier seeing
+            Debug.Log($"Did Hit {_hit.transform.gameObject}");
+
+            GameObject hitObject = _hit.transform.gameObject;
+            var hitManager = hitObject.GetComponent<PlayerManager>(); //if is player
+
+            if (hitManager)
+            {
+                //TODO: send new health to server, which will check CLient.Plater.Health and update this for everyone
+            }
+        }
     }
+
 }

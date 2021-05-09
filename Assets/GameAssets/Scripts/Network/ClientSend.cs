@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Utils.Colour;
 using UnityEngine;
 
 public class ClientSend : MonoBehaviour
@@ -55,12 +56,13 @@ public class ClientSend : MonoBehaviour
         }
     }
 
-    public static void TextChatReceived(string _msg)
+    public static void TextChatReceived(string _msg, Colour _colour)
     {
         using (Packet _packet = new Packet((int)ClientPackets.textChatReceived))
         {   //write sender and message
             _packet.Write(UiManager.instance.usernameField.text); //TODO: make a dictionary or var for player names, this is stupid
             _packet.Write(_msg);
+            _packet.Write(_colour);
             SendUDPData(_packet);
         }
     }
