@@ -10,7 +10,7 @@ public class Client : MonoBehaviour
     public static Client instance;
     public static int dataBufferSize = 4096;
 
-    public string ip = "127.0.0.1"; //This is ip for localhost
+    public string ip = "127.0.0.1";
     public int port = 19130; //This is def port - make both customisable
     public int myId = 0;
     public TCP tcp;
@@ -31,17 +31,19 @@ public class Client : MonoBehaviour
             Destroy(this);
         }
     }
-
-    private void Start()
-    {
-        tcp = new TCP();
-        udp = new UDP();
-    }
+    //hack: e
+    //private void Start()
+    //{
+    //    tcp = new TCP();
+    //    udp = new UDP();
+    //}
 
     public void ConnectToServer(string _ipField) //public void ConnectToServer() => tcp.Connect();
     {
+        tcp = new TCP();
+        udp = new UDP();
 
-        var _ipFieldArray = Dns.GetHostAddresses(_ipField);
+        var _ipFieldArray = Dns.GetHostAddresses(_ipField); 
 
         foreach (var i in _ipFieldArray)
         {
@@ -53,7 +55,7 @@ public class Client : MonoBehaviour
                 {
                     ip = i.ToString();
                     InitializeClientData();
-                    tcp.Connect();
+                    tcp.Connect(); //TODO: fix this double connect bug - not to do with udp, i removed
                     break;
                 }
                 else
@@ -62,11 +64,10 @@ public class Client : MonoBehaviour
                 }
             }
         }
-
         Debug.Log(_ipField);
-
-        InitializeClientData();
-        tcp.Connect();
+        Debug.Log("help me");
+       // InitializeClientData();
+       // tcp.Connect(); //TODO: This fixed it, but now socket is not connected for udp?
     }
 
     public class TCP
