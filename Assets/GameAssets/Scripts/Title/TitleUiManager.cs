@@ -36,14 +36,11 @@ public class TitleUiManager : MonoBehaviour
 
     void Update()
     {
-        if (animate)
+        if (effector)
         {
-            if (effector)
+            if (animate)
                 effector.transform.localScale = Vector3.Lerp(effector.transform.localScale, new Vector3(2f, effector.transform.localScale.y, effector.transform.localScale.z), animspeed * Time.deltaTime);
-        }
-        else
-        {
-            if (effector)
+            else
                 effector.transform.localScale = Vector3.Lerp(effector.transform.localScale, new Vector3(1f, effector.transform.localScale.y, effector.transform.localScale.z), animspeed * Time.deltaTime);
         }
     }
