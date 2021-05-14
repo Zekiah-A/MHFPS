@@ -2,6 +2,7 @@
 
 Shader "Unlit/blur"
 {
+
     Properties
     {
         _Radius("Radius", Range(1, 255)) = 1

@@ -4291,7 +4291,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh18834
+  m_Name: pb_Mesh18852
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4759,7 +4759,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1275258458
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6145,8 +6145,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1843058491}
   m_LocalRotation: {x: -0, y: -0.4754444, z: -0, w: 0.87974584}
-  m_LocalPosition: {x: -3.3, y: 2.0762, z: -0.99}
-  m_LocalScale: {x: 0.5991745, y: 0.613309, z: 1}
+  m_LocalPosition: {x: -3.082, y: 2.198, z: -1.305}
+  m_LocalScale: {x: 0.3328834, y: 0.38071772, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 14
