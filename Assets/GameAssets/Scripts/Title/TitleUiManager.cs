@@ -7,7 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class TitleUiManager : MonoBehaviour
 {
-    private int animspeed = 2;
+    private const int animspeed = 2;
+
     private bool animate;
     private GameObject effector;
 
@@ -16,7 +17,8 @@ public class TitleUiManager : MonoBehaviour
         try
         {
             SceneManager.LoadScene("Multiplayer");
-        } catch(Exception _e)
+        }
+        catch (Exception _e)
         {
             Debug.Log($"Could not load scene Multiplayer: {_e}");
         }
