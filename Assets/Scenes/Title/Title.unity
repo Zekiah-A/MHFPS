@@ -1463,15 +1463,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.5176471}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -2862,6 +2862,7 @@ GameObject:
   - component: {fileID: 796992624}
   - component: {fileID: 796992623}
   - component: {fileID: 796992622}
+  - component: {fileID: 796992625}
   m_Layer: 5
   m_Name: Play
   m_TagString: Untagged
@@ -2972,6 +2973,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 796992620}
   m_CullTransparentMesh: 1
+--- !u!114 &796992625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 796992620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1460212705}
+          m_TargetAssemblyTypeName: TitleUiManager, Assembly-CSharp
+          m_MethodName: TopBarEnter
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 770072588}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1460212705}
+          m_TargetAssemblyTypeName: TitleUiManager, Assembly-CSharp
+          m_MethodName: TopBarExit
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 770072588}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1001 &802002811
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7671,6 +7717,7 @@ GameObject:
   - component: {fileID: 2099806244}
   - component: {fileID: 2099806243}
   - component: {fileID: 2099806242}
+  - component: {fileID: 2099806245}
   m_Layer: 5
   m_Name: Other
   m_TagString: Untagged
@@ -7781,6 +7828,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2099806240}
   m_CullTransparentMesh: 1
+--- !u!114 &2099806245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2099806240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1460212705}
+          m_TargetAssemblyTypeName: TitleUiManager, Assembly-CSharp
+          m_MethodName: TopBarEnter
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1023654843}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1460212705}
+          m_TargetAssemblyTypeName: TitleUiManager, Assembly-CSharp
+          m_MethodName: TopBarExit
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1023654843}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &2114374386
 GameObject:
   m_ObjectHideFlags: 0

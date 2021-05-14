@@ -32,7 +32,7 @@ public class TitleUiManager : MonoBehaviour
     {
         effector = _underline;
         animate = false;
-    } //Slerp?
+    }
 
     void Update()
     {
