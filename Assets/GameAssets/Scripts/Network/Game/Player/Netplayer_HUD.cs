@@ -69,11 +69,26 @@ public class Netplayer_HUD : MonoBehaviour //Netplayer
     public void AddInventoryItem(GameObject _item) //TODO: 1 & 2 anomalous - special resizing after - current code is kind how 1 & 2 will work
     {
         Items.Add(Items.Count + 1, _item);
-        _item = Instantiate(_item, new Vector3(InventoryPanel.transform.position.x + (_item.GetComponent<RectTransform>().sizeDelta.x * Items.Count), InventoryPanel.transform.position.y, InventoryPanel.transform.position.z), Quaternion.identity);
-        _item.transform.parent = InventoryPanel.transform;
+
+        if (Items.Count <= 2)
+        {
+            _item = Instantiate(_item, new Vector3(InventoryPanel.transform.position.x - (InventoryPanel.GetComponent<RectTransform>().sizeDelta.x) + (_item.GetComponent<RectTransform>().sizeDelta.x * Items.Count), InventoryPanel.transform.position.y, InventoryPanel.transform.position.z), Quaternion.identity);
+            _item.transform.parent = InventoryPanel.transform;
+        }
+        else
+        {
+            var _1 = Items[1]; //does it count from 0 or 1
+            Debug.Log(_1);
+
+            _item = Instantiate(_item, new Vector3(InventoryPanel.transform.position.x - (InventoryPanel.GetComponent<RectTransform>().sizeDelta.x) + (_item.GetComponent<RectTransform>().sizeDelta.x * Items.Count), InventoryPanel.transform.position.y, InventoryPanel.transform.position.z), Quaternion.identity);
+            _item.GetComponent<RectTransform>().transform.localScale /= 2; //1/2
+            _item.transform.parent = InventoryPanel.transform;
+
+        }
     } 
 
     #endregion
 
     //TODO: Make netplayer hud actually part of the netplayer prefab!
 }
+
