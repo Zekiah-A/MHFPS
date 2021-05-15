@@ -56,6 +56,7 @@ public class Netplayer_Camera : Netplayer
                 //CamTransform.localPosition = Vector3.Lerp(CamTransform.localPosition, Offsets, 10f);
                 if (Offsets.z >= -8f) //TODO: PROPER VAR
                     Offsets.z -= 0.01f;
+
                 CamTransform.localPosition = Offsets;
             }
 
