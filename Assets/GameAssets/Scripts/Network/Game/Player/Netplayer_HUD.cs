@@ -26,6 +26,10 @@ public class Netplayer_HUD : MonoBehaviour //Netplayer
     public GameObject InventoryPanel;
     int animspeed = 2;
     bool panelMoved;
+    //HACK:
+    bool moveInventoryPanel;
+    Vector3 newPos;
+    //HACK: end
 
     #region Chat
     ///<summary>Update gui with new chat from server. Called from client handle.</summary>
@@ -102,15 +106,23 @@ public class Netplayer_HUD : MonoBehaviour //Netplayer
             //HACK: Move the whole panel up, it's easier than moving the others!
             if (!panelMoved)
             {
-                InventoryPanel.GetComponent<RectTransform>().position += new Vector3(0, _item.GetComponent<RectTransform>().sizeDelta.y * 2 , 0);
+                //InventoryPanel.GetComponent<RectTransform>().position += new Vector3(0, _item.GetComponent<RectTransform>().sizeDelta.y * 2, 0);
+                newPos = InventoryPanel.GetComponent<RectTransform>().position + new Vector3(0, InventoryPanel.GetComponent<RectTransform>().sizeDelta.y, 0);
+                moveInventoryPanel = true;
             }
-
             panelMoved = true;
         }
-    } 
+    }
 
     #endregion
 
     //TODO: Make netplayer hud actually part of the netplayer prefab!
-}
 
+    public void Update()
+    {
+        if (moveInventoryPanel)
+        {
+            InventoryPanel.GetComponent<RectTransform>().position = Vector3.Lerp(InventoryPanel.GetComponent<RectTransform>().position, newPos, 2 * Time.deltaTime);
+        }
+    }
+}

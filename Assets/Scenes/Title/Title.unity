@@ -184,7 +184,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c22777d6e868e4f2fb421913386b154e, type: 2}
+  - {fileID: 2100000, guid: c0d4610c3c7d6af2fb3334460c5dea53, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3753,8 +3753,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 2100000, guid: fa51301425201ab8f9130dc0843b4f73, type: 2}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.25490198}
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4015,7 +4015,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh18312
+  m_Name: pb_Mesh40310
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4350,7 +4350,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh18852
+  m_Name: pb_Mesh40868
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -6682,8 +6682,8 @@ Light:
   m_Color: {r: 0.08141947, g: 0, b: 1, a: 1}
   m_Intensity: 100
   m_Range: 11.81
-  m_SpotAngle: 23.6
-  m_InnerSpotAngle: 8.5
+  m_SpotAngle: 27.053244
+  m_InnerSpotAngle: 20.171118
   m_CookieSize: 10
   m_Shadows:
     m_Type: 2
@@ -7448,7 +7448,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c22777d6e868e4f2fb421913386b154e, type: 2}
+  - {fileID: 2100000, guid: c0d4610c3c7d6af2fb3334460c5dea53, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8852,7 +8852,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -876546973899608171, guid: c10e313604fab81e4aa13c6caec8fa34, type: 3}
+  - {fileID: 2100000, guid: 2864917502fab0d638d2449bb85abf15, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
