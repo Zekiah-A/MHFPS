@@ -24,6 +24,7 @@ public class Netplayer_HUD : MonoBehaviour //Netplayer
 
     List<GameObject> Items = new List<GameObject>();
     public GameObject InventoryPanel;
+    int animspeed = 2;
     bool panelMoved;
 
     #region Chat
@@ -76,7 +77,6 @@ public class Netplayer_HUD : MonoBehaviour //Netplayer
         if (Items.Count <= 2)
         {
             _item = Instantiate(_item, new Vector3(InventoryPanel.transform.position.x - (InventoryPanel.GetComponent<RectTransform>().sizeDelta.x) + (_item.GetComponent<RectTransform>().sizeDelta.x * Items.Count), InventoryPanel.transform.position.y, InventoryPanel.transform.position.z), Quaternion.identity);
-            //_item.transform.parent = InventoryPanel.transform;
             _item.transform.SetParent(InventoryPanel.transform);
         }
         else if (Items.Count <= 3)
@@ -86,7 +86,7 @@ public class Netplayer_HUD : MonoBehaviour //Netplayer
 
             //just check if it right size OR instantiate at full size and do this after
             foreach (Transform _previousItem in InventoryPanel.transform) //not all that "exist", but those ingame
-            {
+            {   
                 _previousItem.GetComponent<RectTransform>().sizeDelta = new Vector2(_previousItem.GetComponent<RectTransform>().sizeDelta.x / Items.Count, _previousItem.GetComponent<RectTransform>().sizeDelta.y / Items.Count);
             }
         }
@@ -102,7 +102,7 @@ public class Netplayer_HUD : MonoBehaviour //Netplayer
             //HACK: Move the whole panel up, it's easier than moving the others!
             if (!panelMoved)
             {
-                InventoryPanel.GetComponent<RectTransform>().position += new Vector3(0, _item.GetComponent<RectTransform>().sizeDelta.y, 0);
+                InventoryPanel.GetComponent<RectTransform>().position += new Vector3(0, _item.GetComponent<RectTransform>().sizeDelta.y * 2 , 0);
             }
 
             panelMoved = true;
