@@ -16,12 +16,15 @@ public class Netplayer_HUD : MonoBehaviour //Netplayer
         return;
     }
 
+
     public InputField InputField;
     public Text ChatboxText;
     Colour localChatColour = new Colour(255, 255, 255, 255);
 
-    public Dictionary<int, GameObject> Items = new Dictionary<int, GameObject>();
+
+    List<GameObject> Items = new List<GameObject>();
     public GameObject InventoryPanel;
+    bool panelMoved;
 
     #region Chat
     ///<summary>Update gui with new chat from server. Called from client handle.</summary>
@@ -66,24 +69,43 @@ public class Netplayer_HUD : MonoBehaviour //Netplayer
 
     #region Inventory
 
-    public void AddInventoryItem(GameObject _item) //TODO: 1 & 2 anomalous - special resizing after - current code is kind how 1 & 2 will work
+    public void AddInventoryItem(GameObject _item)
     {
-        Items.Add(Items.Count + 1, _item);
+        Items.Add(_item);
 
         if (Items.Count <= 2)
         {
             _item = Instantiate(_item, new Vector3(InventoryPanel.transform.position.x - (InventoryPanel.GetComponent<RectTransform>().sizeDelta.x) + (_item.GetComponent<RectTransform>().sizeDelta.x * Items.Count), InventoryPanel.transform.position.y, InventoryPanel.transform.position.z), Quaternion.identity);
-            _item.transform.parent = InventoryPanel.transform;
+            //_item.transform.parent = InventoryPanel.transform;
+            _item.transform.SetParent(InventoryPanel.transform);
         }
-        else
+        else if (Items.Count <= 3)
         {
-            var _1 = Items[1]; //does it count from 0 or 1
-            Debug.Log(_1);
-
             _item = Instantiate(_item, new Vector3(InventoryPanel.transform.position.x - (InventoryPanel.GetComponent<RectTransform>().sizeDelta.x) + (_item.GetComponent<RectTransform>().sizeDelta.x * Items.Count), InventoryPanel.transform.position.y, InventoryPanel.transform.position.z), Quaternion.identity);
-            _item.GetComponent<RectTransform>().transform.localScale /= 2; //1/2
-            _item.transform.parent = InventoryPanel.transform;
+            _item.transform.SetParent(InventoryPanel.transform);
 
+            //just check if it right size OR instantiate at full size and do this after
+            foreach (Transform _previousItem in InventoryPanel.transform) //not all that "exist", but those ingame
+            {
+                _previousItem.GetComponent<RectTransform>().sizeDelta = new Vector2(_previousItem.GetComponent<RectTransform>().sizeDelta.x / Items.Count, _previousItem.GetComponent<RectTransform>().sizeDelta.y / Items.Count);
+            }
+        }
+        else if (Items.Count <= 6)
+        {
+            _item = Instantiate(_item, new Vector3(InventoryPanel.transform.position.x - (InventoryPanel.GetComponent<RectTransform>().sizeDelta.x) + (_item.GetComponent<RectTransform>().sizeDelta.x * (Items.Count - 3)), //-3 to reset and go back 2 start
+                InventoryPanel.transform.position.y - (InventoryPanel.GetComponent<RectTransform>().sizeDelta.y),
+                InventoryPanel.transform.position.z), Quaternion.identity);
+            _item.GetComponent<RectTransform>().sizeDelta = new Vector2(_item.GetComponent<RectTransform>().sizeDelta.x / 3, _item.GetComponent<RectTransform>().sizeDelta.y / 3);
+            _item.transform.SetParent(InventoryPanel.transform);
+            //TODO: ~~Move others up~~
+
+            //HACK: Move the whole panel up, it's easier than moving the others!
+            if (!panelMoved)
+            {
+                InventoryPanel.GetComponent<RectTransform>().position += new Vector3(0, _item.GetComponent<RectTransform>().sizeDelta.y, 0);
+            }
+
+            panelMoved = true;
         }
     } 
 
