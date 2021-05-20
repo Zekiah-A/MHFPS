@@ -91,7 +91,7 @@ public class Netplayer_HUD : MonoBehaviour //Netplayer
             //just check if it right size OR instantiate at full size and do this after
             foreach (Transform _previousItem in InventoryPanel.transform) //not all that "exist", but those ingame
             {   
-                _previousItem.GetComponent<RectTransform>().sizeDelta = new Vector2(_previousItem.GetComponent<RectTransform>().sizeDelta.x / Items.Count, _previousItem.GetComponent<RectTransform>().sizeDelta.y / Items.Count);
+                _previousItem.GetComponent<RectTransform>().sizeDelta = new Vector2(_previousItem.GetComponent<RectTransform>().sizeDelta.x, _previousItem.GetComponent<RectTransform>().sizeDelta.y);
             }
         }
         else if (Items.Count <= 6)
@@ -99,7 +99,7 @@ public class Netplayer_HUD : MonoBehaviour //Netplayer
             _item = Instantiate(_item, new Vector3(InventoryPanel.transform.position.x - (InventoryPanel.GetComponent<RectTransform>().sizeDelta.x) + (_item.GetComponent<RectTransform>().sizeDelta.x * (Items.Count - 3)), //-3 to reset and go back 2 start
                 InventoryPanel.transform.position.y - (InventoryPanel.GetComponent<RectTransform>().sizeDelta.y),
                 InventoryPanel.transform.position.z), Quaternion.identity);
-            _item.GetComponent<RectTransform>().sizeDelta = new Vector2(_item.GetComponent<RectTransform>().sizeDelta.x / 3, _item.GetComponent<RectTransform>().sizeDelta.y / 3);
+            _item.GetComponent<RectTransform>().sizeDelta = new Vector2(_item.GetComponent<RectTransform>().sizeDelta.x, _item.GetComponent<RectTransform>().sizeDelta.y);
             _item.transform.SetParent(InventoryPanel.transform);
             //TODO: ~~Move others up~~
 
