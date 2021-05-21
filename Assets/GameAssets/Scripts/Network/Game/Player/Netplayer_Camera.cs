@@ -5,6 +5,7 @@ using UnityEngine;
 public class Netplayer_Camera : Netplayer
 {
     public static float Sensitivity = 200f;
+    public float LerpSpeed = 0.5f;
     public Vector3 Offsets;
     public Vector3 FPOffsets;
 
@@ -47,17 +48,11 @@ public class Netplayer_Camera : Netplayer
 
             if (Physics.Linecast(body.position, CamTransform.position, out hit))
             {
-                Offsets.z += 0.01f; /*/ * Time.deltaTime; /*/
-                CamTransform.localPosition = Offsets; /*/ /*/
+                CamTransform.position = Vector3.Lerp(CamTransform.position, hit.point, LerpSpeed * Time.deltaTime);
             }
             else
             {
-                ///CamTransform.localPosition = Offsets;
-                //CamTransform.localPosition = Vector3.Lerp(CamTransform.localPosition, Offsets, 10f);
-                if (Offsets.z >= -8f) //TODO: PROPER VAR
-                    Offsets.z -= 0.01f;
-
-                CamTransform.localPosition = Offsets;
+                CamTransform.localPosition = Vector3.Lerp(CamTransform.localPosition, Offsets, LerpSpeed * Time.deltaTime);
             }
 
             Pivot.localRotation = Quaternion.Euler(x_rotation, 0f, 0f);
