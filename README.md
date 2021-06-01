@@ -4,7 +4,11 @@ MHFPS
 
 An epic game.
 =============
-[![](https://raw.githubusercontent.com/Zekiah-A/MHFPS/master/MHFPS_Title.png)]
+MHFPS is a singleplayer story, and chaotic multiplayer based game, set in an "abbstrakt" alternate reality. The game is fully open source and free to play, and has full cross platform server support, using a custom designed [server software](https://www.github.com/Zekiah-A/MHFPS-Server). Feel free to download a release from the [releases page](https://www.github.com/Zekiah-A/MHFPS/releases), or play around with and modify the game's source code to your will!
+
+Note: The game is still in development, many features are not yet present. See the github project page for more info.
+
+![](https://raw.githubusercontent.com/Zekiah-A/MHFPS/master/MHFPS_Title.png)
 
 Download:
 =========
