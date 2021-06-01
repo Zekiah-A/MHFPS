@@ -282,7 +282,8 @@ public class Client : MonoBehaviour
             { (int)ServerPackets.playerPosition, ClientHandle.PlayerPosition },
             { (int)ServerPackets.playerRotation, ClientHandle.PlayerRotation },
             { (int)ServerPackets.textChat, ClientHandle.TextChat},
-            { (int)ServerPackets.udpTest, ClientHandle.UDPTest }
+            { (int)ServerPackets.udpTest, ClientHandle.UDPTest },
+            { (int)ServerPackets.rigidUpdate, ClientHandle.RigidUpdate}
         };
         Debug.Log("Initialized packets.");
     }

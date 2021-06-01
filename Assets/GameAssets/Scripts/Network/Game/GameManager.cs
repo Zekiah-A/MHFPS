@@ -41,4 +41,6 @@ public class GameManager : MonoBehaviour
         _player.GetComponent<PlayerManager>().username = _username;
         players.Add(_id, _player.GetComponent<PlayerManager>());
     }
+
+    //TODO: Receive rigidbody update from ClientHandle, create dictionary on start for all rigidbodies and move the correct body.
 }

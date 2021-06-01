@@ -86,4 +86,14 @@ public class ClientHandle : MonoBehaviour
         Netplayer_HUD.instance.UpdateTextChat(_msg, _colour);
         Debug.Log($"{_colour.R} {_colour.G} {_colour.B} {_colour.A}");
     }
+
+    public static void RigidUpdate(Packet _packet)
+    {
+        int _rigidID = _packet.ReadInt();
+        Vector3 _newPos = _packet.ReadVector3();
+
+        Debug.Log($"Rigidbody object with ID {_rigidID} was moved to {_newPos}");
+
+        //TODO: Call GameManager to move the rigidbody object
+    }
 }
