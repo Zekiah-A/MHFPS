@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     public static Dictionary<int, PlayerManager> players = new Dictionary<int, PlayerManager>();
+    public static Dictionary<int, Netrigid> rigidbodies = new Dictionary<int, Netrigid>();
 
     public GameObject localPlayerPrefab;
     public GameObject playerPrefab;
@@ -42,5 +43,12 @@ public class GameManager : MonoBehaviour
         players.Add(_id, _player.GetComponent<PlayerManager>());
     }
 
-    //TODO: Receive rigidbody update from ClientHandle, create dictionary on start for all rigidbodies and move the correct body.
+    public void UpdateRigidbodies(int _rigidId, Vector3 _newPos)
+    {
+        Debug.Log($"Updating {_rigidId}'s position to {_newPos}");
+        if (rigidbodies.TryGetValue(_rigidId, out Netrigid _rigid))
+        {
+            _rigid.gameObject.transform.position = _newPos;
+        }
+    }
 }

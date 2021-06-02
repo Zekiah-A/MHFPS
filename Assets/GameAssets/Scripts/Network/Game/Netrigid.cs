@@ -6,11 +6,12 @@ public class Netrigid : MonoBehaviour
 {
     public int RigidID;
 
-    // Start is called before the first frame update
-    void Start()
+    ///<summary>Sign this rigidbody object with the game manager</summary>
+    void Awake()
     {
-        GameObject thisobject = gameObject;
+        GameManager.rigidbodies.Add(RigidID, this);
     }
+
     //TODO: "OnHit" is ___WAY___ more efficient.
     void FixedUpdate()
     {

@@ -40,14 +40,11 @@ public class ClientHandle : MonoBehaviour
     {
         int _toPlayer = _packet.ReadInt(); 
         Vector3 _newPos = _packet.ReadVector3();
-        Debug.Log($"Player: { _toPlayer} has moved to: { _newPos}");
 
         foreach (PlayerManager _player in GameManager.players.Values)
         {
             if (_player.id == _toPlayer) //TODO: (if we have found the recipient with foreach) - this is slow, go direct and move them!
             {
-                Debug.Log($"{_player.username} moved to {_newPos}");
-
                 GameObject _plrObj = GameManager.players[_player.id].gameObject;
                 _plrObj.transform.position = _newPos;
                 //TODO: _plrObj.transform.localPosition = Vector3.MoveTowards(_plrObj.transform.localPosition, _newPos, Time.deltaTime * _plrMovement.Speed);
@@ -60,14 +57,11 @@ public class ClientHandle : MonoBehaviour
     {
         int _toPlayer = _packet.ReadInt(); 
         Quaternion _newRot = _packet.ReadQuaternion();
-        Debug.Log($"Player: { _toPlayer} has rotated to: { _newRot}");
 
         foreach (PlayerManager _player in GameManager.players.Values)
         {
             if (_player.id == _toPlayer) //TODO: (if we have found the recipient with foreach) - this is slow, go direct and move them!
             {
-                Debug.Log($"{_player.username} rotated to {_newRot}");
-
                 GameObject _plrObj = GameManager.players[_player.id].gameObject;
                 _plrObj.transform.rotation = _newRot;
                 break;
@@ -95,5 +89,6 @@ public class ClientHandle : MonoBehaviour
         Debug.Log($"Rigidbody object with ID {_rigidID} was moved to {_newPos}");
 
         //TODO: Call GameManager to move the rigidbody object
+        GameManager.instance.UpdateRigidbodies(_rigidID, _newPos);
     }
 }

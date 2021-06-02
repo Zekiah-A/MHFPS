@@ -260,7 +260,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb90e40cdbbc691378b37b24d3e1e888, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  instance: {fileID: 0}
   Plr: {fileID: 6585362896185890471}
   Skin: {fileID: 570447481293052482}
   body: {fileID: 6585362896185890470}
@@ -283,7 +282,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 583e56a6cd3c4bc5893b6720a6c7df89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  instance: {fileID: 0}
   Plr: {fileID: 6585362896185890471}
   Skin: {fileID: 570447481293052482}
   body: {fileID: 6585362896185890470}
@@ -294,6 +292,7 @@ MonoBehaviour:
   GroundMask:
     serializedVersion: 2
     m_Bits: 64
+  LerpSpeed: 0.5
   Offsets: {x: 0, y: 2, z: -8}
   FPOffsets: {x: 0, y: 1, z: 0}
 --- !u!114 &3618781038716896687
@@ -308,17 +307,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3dd1cddc7f419725a4dac09af4f7a3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  instance: {fileID: 0}
-  Plr: {fileID: 6585362896185890471}
-  Skin: {fileID: 570447481293052482}
-  body: {fileID: 6585362896185890470}
-  GroundCheck: {fileID: 6585362895507078518}
-  CamTransform: {fileID: 6585362896137378501}
-  Pivot: {fileID: 6585362895268661183}
-  Controller: {fileID: 6585362896185890465}
-  GroundMask:
-    serializedVersion: 2
-    m_Bits: 64
   Speed: 5
   SocketConnected: 0
 --- !u!114 &7315122370690707936
@@ -333,7 +321,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64ddd383fd2317fb5bf43e442aec46cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  instance: {fileID: 0}
   Plr: {fileID: 6585362896185890471}
   Skin: {fileID: 570447481293052482}
   body: {fileID: 6585362896185890470}
@@ -354,11 +341,11 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6585362896185890471}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 50
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
