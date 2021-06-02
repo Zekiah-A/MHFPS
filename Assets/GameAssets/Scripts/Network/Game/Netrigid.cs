@@ -16,6 +16,8 @@ public class Netrigid : MonoBehaviour
     void FixedUpdate()
     {
         ///<summary>Send loc, rot and this object ID at once by passing onto clientsend</summary>
-        ClientSend.RigidUpdateReceived(RigidID, this.transform.position);
+        //HACK: ONly start sending when player is in game
+        if(Netplayer.instance.isActiveAndEnabled)
+            ClientSend.RigidUpdateReceived(RigidID, this.transform.position);
     }
 }
