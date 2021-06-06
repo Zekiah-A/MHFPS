@@ -24,7 +24,6 @@ public class Netplayer_HUD : MonoBehaviour //Netplayer
 
     List<GameObject> Items = new List<GameObject>();
     public GameObject InventoryPanel;
-    int animspeed = 2;
     bool panelMoved;
     //HACK:
     bool moveInventoryPanel;

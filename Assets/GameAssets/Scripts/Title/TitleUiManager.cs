@@ -23,7 +23,7 @@ public class TitleUiManager : MonoBehaviour
             Debug.Log($"Could not load scene Multiplayer: {_e}");
         }
     }
-
+    //TODO: async these or something
     public void TopBarEnter(GameObject _underline)
     {
         effector = _underline;

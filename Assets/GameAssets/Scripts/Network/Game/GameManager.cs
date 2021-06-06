@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
         players.Add(_id, _player.GetComponent<PlayerManager>());
     }
 
-    public void UpdateRigidbodies(int _rigidId, Vector3 _newPos)
+    public void UpdateRigidbodies(int _rigidId, Vector3 _newPos) //TODO: rotation of rb object
     {
         Debug.Log($"Updating {_rigidId}'s position to {_newPos}");
         if (rigidbodies.TryGetValue(_rigidId, out Netrigid _rigid))

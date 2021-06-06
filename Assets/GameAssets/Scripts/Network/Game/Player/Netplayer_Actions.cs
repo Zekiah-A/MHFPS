@@ -58,6 +58,9 @@ public class Netplayer_Actions : Netplayer
             {
                 //TODO: send new health to server, which will check CLient.Plater.Health and update this for everyone
             }
+
+            //Hack: just to test.
+            ClientSend.PlayerDamageReceived();
         }
     }
 

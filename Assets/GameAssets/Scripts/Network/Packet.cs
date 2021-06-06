@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using Utils.Colour;
 
-/// <summary>Sent from server to client.</summary>
 public enum ServerPackets
 {
     welcome = 1,
@@ -14,7 +13,8 @@ public enum ServerPackets
     playerRotation,
     textChat,
     udpTest,
-    rigidUpdate
+    rigidUpdate,
+    playerDamage
 }
 
 /// <summary>Sent from client to server.</summary>
@@ -25,7 +25,8 @@ public enum ClientPackets
     updateRotationReceived,
     textChatReceived,
     udpTestReceived,
-    rigidUpdateReceived
+    rigidUpdateReceived, //TODO: Fix incorrect spelling
+    playerDamageReceived
 }
 
 public class Packet : IDisposable

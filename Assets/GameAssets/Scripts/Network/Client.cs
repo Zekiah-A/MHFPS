@@ -54,9 +54,9 @@ public class Client : MonoBehaviour
                 if (subIP.Length == 4)
                 {
                     ip = i.ToString();
-                    InitializeClientData();
-                    tcp.Connect(); //TODO: fix this double connect bug - not to do with udp, i removed
-                    break;
+                    //InitializeClientData();
+                    //tcp.Connect(); //TODO: fix this double connect bug - not to do with udp, i removed
+                    //break; //HACK: Remove this since bit would happen anyway at the end!
                 }
                 else
                 {
@@ -64,10 +64,9 @@ public class Client : MonoBehaviour
                 }
             }
         }
-        Debug.Log(_ipField);
-        Debug.Log("help me");
-       // InitializeClientData();
-       // tcp.Connect(); //TODO: This fixed it, but now socket is not connected for udp?
+        Debug.Log(_ipField);  //UDP doesn't connect.
+        InitializeClientData();
+        tcp.Connect();
     }
 
     public class TCP
@@ -229,6 +228,8 @@ public class Client : MonoBehaviour
             catch(Exception _e)
             {
                 Debug.Log($"Error sending data to server via UDP : {_e}");
+                //HACK: Try to force and  connect here - it just doesn't
+                Connect(((IPEndPoint)instance.tcp.socket.Client.LocalEndPoint).Port);
             }
         }
 
@@ -247,9 +248,10 @@ public class Client : MonoBehaviour
 
                 HandleData(_data);
             }
-            catch //(Exception _e)
+            catch (Exception _ex)
             {
                 //TODO: Disconnect
+                Debug.Log($"Error receiving UDP callback: {_ex}");
                 return;
             }
         }
@@ -283,7 +285,8 @@ public class Client : MonoBehaviour
             { (int)ServerPackets.playerRotation, ClientHandle.PlayerRotation },
             { (int)ServerPackets.textChat, ClientHandle.TextChat},
             { (int)ServerPackets.udpTest, ClientHandle.UDPTest },
-            { (int)ServerPackets.rigidUpdate, ClientHandle.RigidUpdate}
+            { (int)ServerPackets.rigidUpdate, ClientHandle.RigidUpdate},
+            { (int)ServerPackets.playerDamage, ClientHandle.PlayerDamage }
         };
         Debug.Log("Initialized packets.");
     }

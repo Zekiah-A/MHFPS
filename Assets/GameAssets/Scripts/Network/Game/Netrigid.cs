@@ -18,6 +18,6 @@ public class Netrigid : MonoBehaviour
         ///<summary>Send loc, rot and this object ID at once by passing onto clientsend</summary>
         //HACK: ONly start sending when player is in game
         if(Netplayer.instance.isActiveAndEnabled)
-            ClientSend.RigidUpdateReceived(RigidID, this.transform.position);
+            ClientSend.RigidUpdateReceived(RigidID, this.transform.position); //TODO: Enable rotation
     }
 }

@@ -84,5 +84,15 @@ public class ClientSend : MonoBehaviour
             SendUDPData(_packet);
         }
     }
+    //HACK: Test values for now
+    public static void PlayerDamageReceived()
+    {
+        using (Packet _packet = new Packet((int)ClientPackets.playerDamageReceived))
+        {
+            _packet.Write(1);//player hit)
+            _packet.Write(1.0f);//damagedealt)
+            SendTCPData(_packet);
+        }
+    }
     #endregion
 }

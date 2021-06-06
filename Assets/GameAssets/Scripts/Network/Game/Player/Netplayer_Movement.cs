@@ -10,7 +10,7 @@ public class Netplayer_Movement : MonoBehaviour
 
     public const float WALKSPEED = 12f;
     public const float SPRINTSPEED = 16f;
-    public const float JUMPHEIGHT = 2f;
+    public const float JUMPHEIGHT = 20f;
 
     private const float gravity = -9.81f;
     private const float ground_distance = 0.4f;

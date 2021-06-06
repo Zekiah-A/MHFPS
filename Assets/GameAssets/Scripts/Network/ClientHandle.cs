@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Net;
@@ -15,7 +16,17 @@ public class ClientHandle : MonoBehaviour
         Client.instance.myId = _myId;
         ClientSend.WelcomeReceived();
 
-        Client.instance.udp.Connect(((IPEndPoint)Client.instance.tcp.socket.Client.LocalEndPoint).Port);
+        //HACK: Connect at samne time as TCP connect
+        //Client.instance.udp.Connect(((IPEndPoint)Client.instance.tcp.socket.Client.LocalEndPoint).Port);
+        //HACK: Connect UDP here instead
+        try
+        {
+            Client.instance.udp.Connect(((IPEndPoint)Client.instance.tcp.socket.Client.LocalEndPoint).Port);
+        }
+        catch (Exception _ex)
+        {
+            Debug.Log($"Could not force connect to UDP on TCP connection {_ex}");
+        }
     }
 
     public static void SpawnPlayer(Packet _packet)
@@ -38,7 +49,7 @@ public class ClientHandle : MonoBehaviour
     //TODO: Smoothly lerp/translate between positions (since we only get updates 30 times/sec)
     public static void PlayerPosition(Packet _packet)
     {
-        int _toPlayer = _packet.ReadInt(); 
+        int _toPlayer = _packet.ReadInt();
         Vector3 _newPos = _packet.ReadVector3();
 
         foreach (PlayerManager _player in GameManager.players.Values)
@@ -50,12 +61,12 @@ public class ClientHandle : MonoBehaviour
                 //TODO: _plrObj.transform.localPosition = Vector3.MoveTowards(_plrObj.transform.localPosition, _newPos, Time.deltaTime * _plrMovement.Speed);
                 break;
             }
-        }   
+        }
     }
     //TODO: Smoothly rotate to new position.
     public static void PlayerRotation(Packet _packet)
     {
-        int _toPlayer = _packet.ReadInt(); 
+        int _toPlayer = _packet.ReadInt();
         Quaternion _newRot = _packet.ReadQuaternion();
 
         foreach (PlayerManager _player in GameManager.players.Values)
@@ -90,5 +101,13 @@ public class ClientHandle : MonoBehaviour
 
         //TODO: Call GameManager to move the rigidbody object
         GameManager.instance.UpdateRigidbodies(_rigidID, _newPos);
+    }
+
+    public static void PlayerDamage(Packet _packet)
+    {
+        int _playerHit = _packet.ReadInt();
+        float _playerHealth = _packet.ReadFloat();
+
+        Debug.Log($"Player {_playerHit} was hit and their health is now {_playerHealth}");
     }
 }
