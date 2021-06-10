@@ -6,4 +6,6 @@ public class PlayerManager : MonoBehaviour
 {
     public int id;
     public string username;
+    public float health;
+    public bool isDead;
 }

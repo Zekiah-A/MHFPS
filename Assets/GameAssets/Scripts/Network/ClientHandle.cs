@@ -108,6 +108,7 @@ public class ClientHandle : MonoBehaviour
         int _playerHit = _packet.ReadInt();
         float _playerHealth = _packet.ReadFloat();
 
-        Debug.Log($"Player {_playerHit} was hit and their health is now {_playerHealth}");
+        GameManager.players[_playerHit].health = _playerHealth;
+        Debug.Log($"Player {_playerHit} was hit and their health is now {_playerHealth}(from pk) {GameManager.players[_playerHit].health} from playermanager");
     }
 }

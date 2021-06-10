@@ -51,7 +51,7 @@ public class Netplayer_HUD : MonoBehaviour //Netplayer
         switch (args[0])
         {
             case "/help":
-                ChatboxText.text += "\n" + "<b>Help commands:</b> \n /colour <i>r g b a</i>";
+                ChatboxText.text += "\n" + "<b>Help commands:</b> \n /colour <i>r g b a</i> \n /give <i>ID</i> \n /health <i>player amount</i> ";
                 break;
             case "/colour":
                 try
@@ -63,6 +63,10 @@ public class Netplayer_HUD : MonoBehaviour //Netplayer
                     ChatboxText.text += "\n" + $"<b>Could not apply new colour!</b> " +
                         "<color=#c0c0c0ff>Check that you have provided 4 numbers (RGBA), and have included no additional letters.</color>";
                 }
+                break;
+            case "/health":
+                break;
+            case "/give":
                 break;
             default:
                 ClientSend.TextChatReceived(InputField.text, localChatColour);
