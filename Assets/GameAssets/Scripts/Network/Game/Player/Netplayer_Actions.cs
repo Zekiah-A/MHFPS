@@ -52,11 +52,11 @@ public class Netplayer_Actions : Netplayer
             Debug.Log($"Did Hit {_hit.transform.gameObject}");
 
             GameObject hitObject = _hit.transform.gameObject;
-            var hitManager = hitObject.GetComponent<PlayerManager>(); //if is player
-
-            if (hitManager)
+            PlayerManager hitManager = hitObject.GetComponent<PlayerManager>();
+            if (hitManager != null)
             {
-                //TODO: send new health to server, which will check CLient.Plater.Health and update this for everyone
+                //TODO: send new health to server, which will check CLient.Player.Health and update this for everyone
+                ClientSend.PlayerDamageReceived();
             }
 
             //Hack: just to test.

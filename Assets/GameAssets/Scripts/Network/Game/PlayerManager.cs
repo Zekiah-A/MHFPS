@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -8,4 +9,6 @@ public class PlayerManager : MonoBehaviour
     public string username;
     public float health;
     public bool isDead;
+
+    public TextMeshPro healthbar;
 }

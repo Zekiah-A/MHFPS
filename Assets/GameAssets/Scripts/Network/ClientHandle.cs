@@ -109,6 +109,9 @@ public class ClientHandle : MonoBehaviour
         float _playerHealth = _packet.ReadFloat();
 
         GameManager.players[_playerHit].health = _playerHealth;
-        Debug.Log($"Player {_playerHit} was hit and their health is now {_playerHealth}(from pk) {GameManager.players[_playerHit].health} from playermanager");
+        Debug.Log($"Player {_playerHit} was hit and their health is now {_playerHealth} (from pk) {GameManager.players[_playerHit].health} (from playermanager).");
+
+
+        GameManager.players[_playerHit].healthbar.text = _playerHealth.ToString();
     }
 }
