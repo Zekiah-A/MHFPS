@@ -7,6 +7,10 @@ using UnityEngine;
 
 public class ClientHandle : MonoBehaviour
 {
+
+    public delegate void PlayerDamageHandler(object sender, PlayerDamageArgs e);
+    public static event PlayerDamageHandler PlayerDamageEvent;
+
     public static void Welcome(Packet _packet)
     {
         string _msg = _packet.ReadString();
@@ -110,8 +114,39 @@ public class ClientHandle : MonoBehaviour
 
         GameManager.players[_playerHit].health = _playerHealth;
         Debug.Log($"Player {_playerHit} was hit and their health is now {_playerHealth} (from pk) {GameManager.players[_playerHit].health} (from playermanager).");
-
-
+        
+        //TODO: Make an event or action that will call all the effects for damage
         GameManager.players[_playerHit].healthbar.text = _playerHealth.ToString();
+        //HACK: This is terribleeeeeeeeeeeeeeeeeee
+
+        PlayerDamageEvent?.Invoke(null, new PlayerDamageArgs("Hello"));
+    }
+
+   // protected virtual void RaiseDamageEvent()
+
+}
+
+/*
+public class SampleEventArgs
+{
+    public SampleEventArgs(string text) { Text = text; }
+    public string Text { get; } // readonly
+}
+
+public class Publisher
+{
+    // Declare the delegate (if using non-generic pattern).
+    public delegate void SampleEventHandler(object sender, SampleEventArgs e);
+
+    // Declare the event.
+    public event SampleEventHandler SampleEvent;
+
+    // Wrap the event in a protected virtual method
+    // to enable derived classes to raise the event.
+    protected virtual void RaiseSampleEvent()
+    {
+        // Raise the event in a thread-safe manner using the ?. operator.
+        SampleEvent?.Invoke(this, new SampleEventArgs("Hello"));
     }
 }
+*/
